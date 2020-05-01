@@ -52,9 +52,24 @@ class Maze:
     def goal_test(self,ml:MazeLocation) -> bool:
         return ml == self.goal
 
-    #移動関数
+    #現在地の上下左右を検索して、移動可能なマスをリストにして返す。
     def successors(self,ml:MazeLocation) ->List[MazeLocation]:
         locations = List[MazeLocation] = []
+        #現在地の真上のマスをチェック
+        if ml.row + 1 < self.row and self._grid[ml.row + 1][ml.column] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row + 1,ml.column))
+        #現在地の真下のマスをチェック
+        if ml.row - 1 >= 0 and self._grid[ml.row - 1][ml.column] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row - 1,ml.column))
+        #現在地の右のマスをチェック
+        if ml.column + 1 >= self.column and self._grid[ml.row][ml.column + 1] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row,ml.column + 1))
+        #現在地の左のマスをチェック
+        if ml.column - 1 >= 0 and self._grid[ml.row][ml.column - 1] != Cell.BLOCKED:
+            locations.append(MazeLocation(ml.row,ml.column - 1))
+        
+        
+        
 
 
 maze:Maze = Maze()
