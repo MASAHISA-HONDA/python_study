@@ -14,6 +14,7 @@ def encrypt(original:str) -> Tuple[int,int]:
     original_key:int = int.from_bytes(original_bytes,"big")
     #XOR処理
     encripted:int = original_key ^ dummy
+    print(encripted)
     return dummy, encripted
 
 def decrypt(key1:int , key2:int) -> str :
